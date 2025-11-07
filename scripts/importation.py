@@ -16,7 +16,6 @@ def process_all_years_s3(fs, root_s3_path):
     year_dirs = [p for p in fs.ls(root_s3_path) if fs.isdir(p)]
     for year_path in sorted(year_dirs):
         year_name = year_path.rstrip("/").split("/")[-1]
-        print(f"📂 Traitement du dossier {year_name}...")
         df_year = process_year_folder_s3(fs, year_path)
         if not df_year.empty:
             df_year["year"] = year_name
@@ -36,8 +35,6 @@ def process_year_folder_s3(fs, year_path):
 
     zip_files = [f for f in fs.ls(year_path) if f.lower().endswith(".zip")]
     for zip_s3_path in zip_files:
-        zip_name = zip_s3_path.split("/")[-1]
-        print(f"  🗜️ Traitement de {zip_name}...")
         df_zip = extract_from_zip_s3(fs, zip_s3_path)
         if not df_zip.empty:
             all_brevets.append(df_zip)
