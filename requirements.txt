@@ -1,1 +1,7 @@
 matplotlib
+io
+zipfile
+pandas 
+xml.etree.ElementTree 
+s3fs
+
