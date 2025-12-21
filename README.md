@@ -27,6 +27,7 @@ Attributs clés : Identifiant de l'entreprise (SIREN/Nom), date de dépôt, et c
 Données Financières :
 
 (A modifier /// clément)
+
 Historique des cours de bourse (Open, High, Low, Close, Volume) des entreprises cotées sur Euronext Paris (SBF 120, CAC 40, ou panels spécifiques).
 
 Données de capitalisation boursière pour le calcul des ratios de valeur.
@@ -42,6 +43,6 @@ Les bibliothèques principales incluent pandas pour le traitement de données, m
 (A compléter)
 
 
-### Importation des données
+## Importation des données
 Décrire comment obtenir les données
 
