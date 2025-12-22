@@ -1,3 +1,7 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
 def plot_top_classifications(df, n=5):
     top_classes = (
         df.groupby("classification")["nombre"]
@@ -18,9 +22,15 @@ def plot_top_classifications(df, n=5):
     plt.ylabel("Nombre de brevets")
     plt.title(f"Évolution des {n} principales classifications")
     plt.ylim(bottom=0)
-    plt.legend()
+    plt.legend(
+        title="Classification",
+        bbox_to_anchor=(1.05, 1),
+        loc="upper left"
+    )
     plt.grid(True)
+    plt.tight_layout()
     plt.show()
+
 
 def plot_evolution_classification(df, classification):
     data = df[df["classification"] == classification].sort_values("year")
@@ -33,6 +43,7 @@ def plot_evolution_classification(df, classification):
     plt.ylim(bottom=0)
     plt.grid(True)
     plt.show()
+
 
 def plot_part_classification_par_annee(df):
     # 1. Calcul des parts (%) par année
