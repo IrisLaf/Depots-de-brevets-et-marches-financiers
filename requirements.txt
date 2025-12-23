@@ -2,3 +2,4 @@ matplotlib
 pandas 
 s3fs
 numpy
+yfinance
