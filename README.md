@@ -26,7 +26,7 @@ Attributs clés : Identifiant de l'entreprise (SIREN/Nom), date de dépôt, et c
 
 Données Financières :
 
-(A modifier /// clément)
+Importé via la bibliothèque yahoo finance.
 
 Historique des cours de bourse (Open, High, Low, Close, Volume) des entreprises cotées sur Euronext Paris (SBF 120, CAC 40, ou panels spécifiques).
 
