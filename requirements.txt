@@ -1,6 +1,18 @@
-matplotlib
-pandas 
-s3fs
+# Data Processing
+pandas
 numpy
+s3fs
+pyarrow        
+
+# Finance & API
 yfinance
-arch
+
+# Analyse Statistique & Économétrie
+statsmodels
+scipy
+arch            # Pour les modèles GARCH
+scikit-learn    # Pour LinearRegression et metrics
+
+# Visualisation
+matplotlib
+seaborn
