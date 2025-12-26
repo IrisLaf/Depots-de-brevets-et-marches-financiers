@@ -1,48 +1,64 @@
-# Dépôts de brevets et marchés financiers : décrypter la valeur de l'innovation française par la Classification Internationale (CIB) 2017-2024
+# Dépôts de brevets et marchés financiers (2017-2024)
+## Décrypter la valeur de l'innovation française par la Classification Internationale des Brevets (CIB)
 
-## Pourquoi : 
-Ce projet de recherche explore le lien entre l'effort d'innovation technologique (mesuré par les dépôts de brevets) et la perception des marchés financiers (mesurée par la côte boursière).
+Ce projet de recherche explore la corrélation entre l'effort d'innovation technologique et la perception des marchés financiers. En utilisant la Classification Internationale des Brevets (CIB) comme pivot, nous analysons comment le dépôt de brevets agit comme un signal stratégique précoce (early signal) réduisant l'asymétrie d'information entre les entreprises et les investisseurs.
 
-L'enjeu est de démontrer que le dépôt de brevet n'est pas seulement un acte juridique, mais un signal stratégique précoce (early signal) qui réduit l'asymétrie d'information entre l'entreprise et ses investisseurs. En utilisant la Classification Internationale des Brevets (CIB) comme cadre de segmentation, nous cherchons à identifier quels secteurs "surprenants" voient leur valorisation boursière réagir le plus fortement à l'activité de dépôt de titres de propriété industrielle.
-
-## Points clés de l'étude :
-
+## Points clés de l'étude
 Horizon temporel : 2017 - 2024.
 
-Indicateur amont : Flux de dépôts de brevets français (INPI/OEB).
+Indicateur Amont : Flux de dépôts de brevets français (données INPI).
 
-Indicateur aval : Évolution des cours de bourse et capitalisation.
+Indicateur Aval : Rendements boursiers des entreprises cotées sur Euronext Paris.
 
-Cadre théorique : Intelligence économique et théorie du signal.
+Cadre Méthodologique : Analyse économétrique (Lags optimaux, tests MCO, ARMA-GARCH).
 
-## Données
-Le projet croise deux types de sources de données :
+## Structure du projet
+Le projet suit une organisation modulaire pour garantir sa reproductibilité :
 
- Données de Propriété Industrielle :
+Plaintext
+├── data/               # Dossiers de données (non synchronisés sur Git)
+├── notebooks/          # Notebooks Jupyter (Exploration & Modélisation)
+├── scripts/            # Fonctions Python réutilisables (.py)
+│   ├── importation.py  # Pipeline de traitement des flux XML/S3
+│   └── stats_des.py    # Visualisations et statistiques descriptives
+├── .gitignore          # Fichiers à exclure (données, checkpoints)
+├── requirements.txt    # Dépendances du projet
+└── README.md           # Documentation principale
 
-Flux de dépôts de brevets issus des bases de données de l'INPI.
+## Installation et Utilisation
+1. Configuration de l'environnement
 
-Attributs clés : Identifiant de l'entreprise (SIREN/Nom), date de dépôt, et codes CIB (Classification Internationale des Brevets) pour la segmentation sectorielle.
-
-Données Financières :
-
-Importé via la bibliothèque yahoo finance.
-
-Historique des cours de bourse (Open, High, Low, Close, Volume) des entreprises cotées sur Euronext Paris (SBF 120, CAC 40, ou panels spécifiques).
-
-Données de capitalisation boursière pour le calcul des ratios de valeur.
-
-## Comment utiliser ce projet : 
-Installer les packages
+Le projet est optimisé pour l'écosystème Onyxia (SSP Cloud). Pour installer les bibliothèques nécessaires :
 
 pip install -r requirements.txt
 
-Les bibliothèques principales incluent pandas pour le traitement de données, matplotlib/seaborn pour les visualisations, et yfinance ou des API spécifiques pour la récupération des données boursières.
+2. Accès aux données
 
-## Principaux résultats 
-(A compléter)
+Le projet croise deux sources hétérogènes :
 
+Données INPI : Stockées sous format .parquet sur le stockage S3 du projet après un parsing initial des fichiers XML sources.
 
-## Importation des données
-Décrire comment obtenir les données
+Données Financières : Extraites via l'API yfinance pour les tickers Euronext (ex: OR.PA, MC.PA).
 
+## Méthodologie et Modélisation
+Le pipeline d'analyse est automatisé pour permettre une étude multi-sectorielle (Automobile, Pharma, Tech, etc.) :
+
+Nettoyage & Segmentation : Filtrage des types de brevets (A1) et regroupement par classes CIB.
+
+Construction de Portefeuilles : Création d'indices boursiers sectoriels pondérés.
+
+## Analyse Économétrique :
+
+Tests de stationnarité (ADF).
+
+Recherche de lags optimaux (impact des brevets à t−n sur les cours à t).
+
+Validation des hypothèses MCO (Tests de White, Durbin-Watson, Jarque-Bera).
+
+Prédiction : Comparaison de modèles ARMA, EWMA et GARCH pour évaluer la capacité prédictive du signal "Brevet".
+
+## Résultats et Perspectives
+
+Identification des secteurs où l'innovation est un prédicteur robuste de la valeur de marché.
+
+Développement d'un indicateur de trading basé sur la croissance logarithmique des dépôts.
