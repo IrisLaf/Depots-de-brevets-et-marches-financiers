@@ -15,15 +15,20 @@ Cadre Méthodologique : Analyse économétrique (Lags optimaux, tests MCO, ARMA-
 ## Structure du projet 
 
 ```text
-.
-├── data/              # Dossiers de données (non synchronisés sur Git)
-├── notebooks/         # Notebooks Jupyter (Exploration & Modélisation)
-├── scripts/           # Fonctions Python réutilisables (.py)
-│   ├── importation.py # Pipeline de traitement des flux XML/S3
-│   └── stats_des.py   # Visualisations et statistiques descriptives
-├── .gitignore         # Fichiers à exclure (données, checkpoints)
-├── requirements.txt   # Dépendances du projet
-└── README.md          # Documentation principale
+Projet-Python/
+├── output/                   # Graphiques et résultats d'analyses
+│   ├── heteroscedasticite_auto.png
+│   └── normalite_residus_auto.png
+├── scripts/                  # Modules Python réutilisables
+│   ├── __init__.py
+│   ├── cleaning.py           # Nettoyage et filtrage des données CIB
+│   ├── importation.py        # Pipeline d'importation (S3 & yfinance)
+│   └── stats_des.py          # Fonctions de statistiques descriptives
+├── .gitignore                # Fichiers à exclure (données, caches)
+├── load_data.ipynb           # Notebook dédié au parsing initial
+├── Main.ipynb                # Workflow principal et modélisation économétrique
+├── README.md                 # Documentation du projet
+└── requirements.txt          # Dépendances du projet
 ```
 
 ## Installation et Utilisation
