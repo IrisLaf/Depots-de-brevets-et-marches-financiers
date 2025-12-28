@@ -30,7 +30,7 @@ Pour reproduire l'analyse, exécutez le fichier [Main.ipynb](Main.ipynb). Ce der
 ### 2. Accès aux données
 
 Le projet utilise deux sources différentes :
-- Les données des demandes de brevets de l'INPI. Elles sont obtenues à partir du [serveur FTP de l'INPI](https://data.inpi.fr/content/editorial/lien-serveur-ftp-PI) qui est accessible une fois un questionnaire complété et une validation officielle accordée. Ces fichiers au format XML et sont stockées dans un bucket S3. Après un parsing des fichiers, une base agrégée des différents fichiers est ensuite stockée au format parquet sur le stockage S3 du projet, pour éviter de devoir refaire tourner le code de parsing.
+- Les données des demandes de brevets de l'INPI. Elles sont obtenues à partir du [serveur FTP de l'INPI](https://data.inpi.fr/content/editorial/lien-serveur-ftp-PI) qui est accessible en complétant un questionnaire qui permettent d'obtenir les codes de connexion. Ces fichiers au format XML sont stockées dans un bucket S3. Après un parsing des fichiers, une base agrégée des différents fichiers est ensuite stockée au format parquet sur le stockage S3 du projet, pour éviter de devoir refaire tourner le code de parsing.
 - Les données des cours d'action. Elles sont extraites via l'API [yfinance](https://ranaroussi.github.io/yfinance/reference/index.html) pour les tickers Euronext (ex: OR.PA, MC.PA).
 
 ## Méthodologie suivie
@@ -52,7 +52,8 @@ Enfin, nous proposons de mesurer l'effet du nombre de demandes de brevet au sein
 - Prédiction : Comparaison de modèles ARMA, EWMA et GARCH pour évaluer la capacité prédictive du signal "Brevet".
 
 ### 4. Résultats et Perspectives
-**partir à rédiger**
+**partie à rédiger**
+
 Identification des secteurs où l'innovation est un prédicteur robuste de la valeur de marché.
 
 Développement d'un indicateur de trading basé sur la croissance logarithmique des dépôts.

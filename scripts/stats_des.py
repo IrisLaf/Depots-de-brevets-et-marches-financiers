@@ -3,6 +3,45 @@ import pandas as pd
 import seaborn as sns
 
 
+def plot_top_applicants(df, n=5):
+    # Top N organisations sur l’ensemble de la période
+    top_orgs = (
+        df.groupby("orgname")["n_brevets"]
+        .sum()
+        .sort_values(ascending=False)
+        .head(n)
+        .index
+    )
+
+    df_top = df[df["orgname"].isin(top_orgs)]
+    colors = sns.color_palette("Set2", n_colors=len(top_orgs))
+
+    plt.figure(figsize=(10, 5))
+
+    for org, color in zip(top_orgs, colors):
+        data = df_top[df_top["orgname"] == org].sort_values("year")
+        plt.plot(
+            data["year"],
+            data["n_brevets"],
+            marker="o",
+            label=org,
+            color=color
+        )
+
+    plt.xlabel("Année")
+    plt.ylabel("Nombre de brevets")
+    plt.title(f"Évolution des {n} principaux déposants")
+    plt.ylim(bottom=0)
+    plt.legend(
+        title="Organisation",
+        bbox_to_anchor=(1.05, 1),
+        loc="upper left"
+    )
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+
 def plot_top_classifications(df, n=5):
     top_classes = (
         df.groupby("classification")["nombre"]
