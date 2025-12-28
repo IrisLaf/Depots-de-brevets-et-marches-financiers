@@ -12,18 +12,21 @@ Indicateur Aval : Rendements boursiers des entreprises cotées sur Euronext Pari
 
 Cadre Méthodologique : Analyse économétrique (Lags optimaux, tests MCO, ARMA-GARCH).
 
-## Structure du projet
-Le projet suit une organisation modulaire pour garantir sa reproductibilité :
-
-Plaintext
-├── data/               # Dossiers de données (non synchronisés sur Git)
-├── notebooks/          # Notebooks Jupyter (Exploration & Modélisation)
-├── scripts/            # Fonctions Python réutilisables (.py)
-│   ├── importation.py  # Pipeline de traitement des flux XML/S3
-│   └── stats_des.py    # Visualisations et statistiques descriptives
-├── .gitignore          # Fichiers à exclure (données, checkpoints)
-├── requirements.txt    # Dépendances du projet
-└── README.md           # Documentation principale
+## Structure du projet 
+Projet-Python/
+├── output/                   # Graphiques et résultats d'analyses
+│   ├── heteroscedasticite_auto.png
+│   └── normalite_residus_auto.png
+├── scripts/                  # Modules Python réutilisables
+│   ├── __init__.py
+│   ├── cleaning.py           # Nettoyage et filtrage des données CIB
+│   ├── importation.py        # Pipeline d'importation (S3 & yfinance)
+│   └── stats_des.py          # Fonctions de statistiques descriptives
+├── .gitignore                # Exclusion des fichiers lourds/sensibles
+├── load_data.ipynb           # Notebook dédié au parsing initial
+├── Main.ipynb                # Workflow principal et modélisation
+├── README.md                 # Documentation du projet
+└── requirements.txt          # Dépendances du projet
 
 ## Installation et Utilisation
 1. Configuration de l'environnement
@@ -39,6 +42,8 @@ Le projet croise deux sources hétérogènes :
 Données INPI : Stockées sous format .parquet sur le stockage S3 du projet après un parsing initial des fichiers XML sources.
 
 Données Financières : Extraites via l'API yfinance pour les tickers Euronext (ex: OR.PA, MC.PA).
+
+Pour reproduire l'analyse, exécutez le fichier Main.ipynb. Ce dernier pilote les modules situés dans le répertoire scripts/ pour assurer la cohérence du pipeline.
 
 ## Méthodologie et Modélisation
 Le pipeline d'analyse est automatisé pour permettre une étude multi-sectorielle (Automobile, Pharma, Tech, etc.) :
