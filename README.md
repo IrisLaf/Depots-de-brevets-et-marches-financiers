@@ -15,7 +15,6 @@ Projet-Python/
 │   ├── importation.py        # Fonctions d'importation (S3 & yfinance)
 │   └── stats_des.py          # Fonctions de statistiques descriptives
 ├── .gitignore                # Fichiers à exclure (données, caches)
-├── load_data.ipynb           # Notebook dédié au parsing initial
 ├── Main.ipynb                # Workflow principal et modélisation économétrique
 ├── README.md                 # Présentation du projet
 └── requirements.txt          # Dépendances du projet
@@ -36,21 +35,22 @@ Le projet utilise deux sources différentes :
 ## Méthodologie suivie
 
 ### 1. Récupération et traitement des données
-Dans notre première partie, nous importons les données des demandes de brevet de l'INPI. Puis nous réalisons un code de parsing pour exploiter les informations des fichiers .xml dans un dataframe panda et décrivons le contenu des variables. Enfin, nous nettoyons les données (gestion des NA et des valeurs incohérentes). 
+Dans notre première partie, nous importons les données des demandes de brevet de l'INPI. Puis nous réalisons un code de parsing pour exploiter les informations des fichiers .xml dans une base de donnée panda et décrivons le contenu des variables. Enfin, nous nettoyons les données (gestion des NA et des valeurs incohérentes). 
 
 ### 2. Analyse descriptive
 Ensuite, nous réalisons plusieurs statistiques descriptives sur :
 1. L'évolution du nombre de demandes de brevet au cours du temps (2017-2024)
-2. Les inventeurs et les déposants de brevet (qui sont-ils et d'oùu viennent-ils ?)
+2. Les inventeurs et les déposants de brevet (qui sont-ils et d'où viennent-ils ?)
 3. Les secteurs (au sens de la CIB) avec le plus de demandes de brevets
 
 ### 3. Modélisation
-Enfin, nous proposons de mesurer l'effet du nombre de demandes de brevet au sein d'un secteur sur le cours d'action des entreprises cotées en bourse de ce secteur. Après avoir construit une classification, créé des portefeuilles d'entreprises pour cette classification et choisir des pondérations, nous réalisons une analyse économétrique qui comprend :
+Enfin, nous proposons de mesurer l'effet du nombre de demandes de brevet au sein d'un secteur sur le cours d'action des entreprises cotées en bourse de ce secteur. Après avoir construit une classification, créé des portefeuilles d'entreprises pour cette classification et choisi des pondérations, nous réalisons une analyse économétrique qui comprend :
 - Des tests de stationnarité (ADF).
 - La recherche de lags optimaux (impact des brevets à t−n sur les cours à t).
 - Des tests de validation des hypothèses MCO (Tests de White, Durbin-Watson, Jarque-Bera).
-- Prédiction : Comparaison de modèles ARMA, EWMA et GARCH pour évaluer la capacité prédictive du signal "Brevet".
+- De la prédiction : comparaison des modèles ARMA, EWMA et GARCH pour évaluer la capacité prédictive du signal "Brevet".
 
 ### 4. Résultats et Perspectives
-A la suite de ces résultats très encourageant nous identifierons des secteurs où l'innovation est un prédicteur robuste de la valeur de marché. Il sera ensuite envisageable de construire un indicateur de trading basé sur la croissance logarithmique des dépôts et la prédiction induite par le modèle optimal désigné par secteur, et de backtester cet indicateur avec une stratégie réfléchie (possible grâce aux lags identifiés).
-Une autre perspective d'amélioration est l'implémentation d'un algorithme de NLP permettant de classifier chaques brevets dans les secteurs que nous analysons, ou les ignore. Ce qui, couplé avec une stratégie bien définie (et en supposant l'accès à l'ensemble des dépôts de brevets instantannément, via une API fonctionnelle par exemple), permettrait de créer une véritable pipeline de trading automatique.
+Ce projet nous a permis de développer une meilleure compréhension de la nature, du nombre et de l'évolution des dépôts de brevets en France auprès de l'INPI entre 2017 et 2024. Nous avons également pu décliner cette analyse par secteur et par organisations déposantes de brevet. 
+De plus, nous trouvons des résultats encourageants à la suite de nos différentes analyses économétriques mettant en relation flux de dépôts et rendements boursiers dans le secteur automobile. 
+Enfin, nous identifions plusieurs pistes d'amélioration de notre projet, à commencer par la construction d'un indicateur de trading basé sur la croissance logarithmique des dépôts et la prédiction induite par le modèle optimal désigné par secteur. Il serait alors possible de backtester cet indicateur avec une stratégie réfléchie. Une autre perspective d'amélioration est l'implémentation d'un algorithme de NLP permettant de classifier les brevets par secteurs. Ce qui, couplé avec une stratégie bien définie (et en supposant l'accès à l'ensemble des dépôts de brevets instantanément, via une API fonctionnelle par exemple), permettrait de créer une pipeline de trading automatique.
