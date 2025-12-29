@@ -52,8 +52,5 @@ Enfin, nous proposons de mesurer l'effet du nombre de demandes de brevet au sein
 - Prédiction : Comparaison de modèles ARMA, EWMA et GARCH pour évaluer la capacité prédictive du signal "Brevet".
 
 ### 4. Résultats et Perspectives
-**partie à rédiger**
-
-Identification des secteurs où l'innovation est un prédicteur robuste de la valeur de marché.
-
-Développement d'un indicateur de trading basé sur la croissance logarithmique des dépôts.
+A la suite de ces résultats très encourageant nous identifierons des secteurs où l'innovation est un prédicteur robuste de la valeur de marché. Il sera ensuite envisageable de construire un indicateur de trading basé sur la croissance logarithmique des dépôts et la prédiction induite par le modèle optimal désigné par secteur, et de backtester cet indicateur avec une stratégie réfléchie (possible grâce aux lags identifiés).
+Une autre perspective d'amélioration est l'implémentation d'un algorithme de NLP permettant de classifier chaques brevets dans les secteurs que nous analysons, ou les ignore. Ce qui, couplé avec une stratégie bien définie (et en supposant l'accès à l'ensemble des dépôts de brevets instantannément, via une API fonctionnelle par exemple), permettrait de créer une véritable pipeline de trading automatique.
