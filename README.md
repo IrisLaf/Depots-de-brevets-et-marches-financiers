@@ -36,7 +36,7 @@ Le projet utilise deux sources différentes :
 ## Méthodologie suivie
 
 ### 1. Récupération et traitement des données
-Dans cette partie, nous importons les données des demandes de brevet de l'INPI. Puis nous réalisons un code de parsing pour exploiter les informations des fichiers .xml dans un dataframe panda et décrivons au mieux le contenu des variables. Enfin, nous nettoyons les données (gestion des NA et des valeurs incohérentes). 
+Dans notre première partie, nous importons les données des demandes de brevet de l'INPI. Puis nous réalisons un code de parsing pour exploiter les informations des fichiers .xml dans un dataframe panda et décrivons le contenu des variables. Enfin, nous nettoyons les données (gestion des NA et des valeurs incohérentes). 
 
 ### 2. Analyse descriptive
 Ensuite, nous réalisons plusieurs statistiques descriptives sur :
