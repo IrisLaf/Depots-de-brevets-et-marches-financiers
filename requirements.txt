@@ -16,3 +16,6 @@ scikit-learn    # Pour LinearRegression et metrics
 # Visualisation
 matplotlib
 seaborn
+
+#NLP
+sentence-transformers
